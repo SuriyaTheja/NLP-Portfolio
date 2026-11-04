@@ -175,10 +175,10 @@ p{margin:0 0 12px}
 .chip:hover{border-color:var(--violet);color:var(--tx)}
 .chip.on{background:rgba(124,108,255,.2);border-color:var(--violet);color:var(--tx);box-shadow:0 0 16px rgba(124,108,255,.3)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.zoom{cursor:zoom-in;border-radius:12px;border:1px solid var(--line);overflow:hidden;background:#0b0f1d;position:relative}
-.zoom img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .5s;filter:saturate(.85) brightness(.9)}
-.zoom:hover img{transform:scale(1.04);filter:none}
-.zoom .cap{position:absolute;left:8px;bottom:8px;font:500 10.5px/1 var(--mono);background:rgba(6,9,20,.82);color:var(--tx);padding:6px 8px;border-radius:7px;border:1px solid var(--line2)}
+.zoom{cursor:zoom-in;border-radius:12px;border:1px solid var(--line);overflow:hidden;background:#0b0f1d;position:relative;display:flex;align-items:center;justify-content:center}
+.zoom img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;transition:transform .4s ease,filter .4s ease;filter:saturate(.95) brightness(.95)}
+.zoom:hover img{transform:scale(1.02);filter:none}
+.zoom .cap{position:absolute;left:8px;bottom:8px;font:500 10.5px/1 var(--mono);background:rgba(6,9,20,.88);backdrop-filter:blur(6px);color:var(--tx);padding:5px 8px;border-radius:7px;border:1px solid var(--line2);pointer-events:none;z-index:2}
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 @media (max-width:860px){.g2{grid-template-columns:minmax(0,1fr)}}
 .stack16 > * + *{margin-top:16px}
@@ -194,7 +194,11 @@ p{margin:0 0 12px}
 .langs span{font:500 13px/1 var(--sans);padding:9px 11px;border-radius:9px;border:1px solid var(--line2);background:rgba(255,255,255,.02)}
 .langs span.lt{opacity:.6;border-style:dashed}
 .meta-q{font:italic 400 3.3rem/1.05 var(--serif);margin:6px 0 12px}
-.l1 .zoom{height:170px;margin-top:auto}
+.l1 .zoom{margin-top:auto}
+.l1 > .panel:nth-child(2) .zoom{height:240px;background:#141724}
+#groupwork .zoom{height:380px;background:#080c1b}
+@media (max-width:980px){.l1 > .panel:nth-child(2) .zoom{height:250px}#groupwork .zoom{height:360px}}
+@media (max-width:520px){.l1 > .panel:nth-child(2) .zoom{height:210px}#groupwork .zoom{height:300px}}
 .l1 .pushed{margin-top:16px}
 .l1 ul{margin:0 0 16px;padding-left:18px;color:var(--tx2);font-size:14px}
 .l1 li{margin-bottom:6px}
@@ -204,8 +208,11 @@ p{margin:0 0 12px}
 .algo{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:26px}
 @media (max-width:900px){.algo{grid-template-columns:minmax(0,1fr)}}
 .algo + .algo{margin-top:16px}
-.side .zoom{height:250px}
-.side .zoom img{object-position:top}
+.side .zoom{height:340px;background:#080c1b}
+#editdist .side .zoom{height:480px}
+#viterbi .side .zoom{height:340px}
+@media (max-width:900px){#editdist .side .zoom{height:420px}#viterbi .side .zoom{height:320px}}
+@media (max-width:520px){#editdist .side .zoom{height:340px}#viterbi .side .zoom{height:280px}}
 .ed-in{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin:18px 0 12px}
 .ed-in label{display:flex;flex-direction:column;gap:7px;font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--tx3)}
 .ed-in input{width:170px;padding:11px 13px;border:1px solid var(--line2);border-radius:10px;background:rgba(0,0,0,.25);font:500 16px/1 var(--mono);text-transform:uppercase;outline:none;color:var(--tx)}
@@ -238,7 +245,7 @@ p{margin:0 0 12px}
 .vit .vw.on{fill:var(--tx)}
 .vit .ve{stroke:rgba(150,165,255,.2);stroke-width:1;stroke-dasharray:3 5}
 .vit .ve.bp{stroke:rgba(200,205,240,.6);stroke-width:1.5;stroke-dasharray:none}
-.vit .ve.path{stroke:url(#vg);stroke-width:3.5;stroke-dasharray:none;filter:drop-shadow(0 0 6px rgba(34,211,238,.7))}
+.vit .ve.path{stroke:#2fd6f0;stroke:url(#vg);stroke-width:3.5;stroke-dasharray:none;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(34,211,238,.7))}
 .vit .vc{fill:#0b1020;stroke:rgba(150,165,255,.22);stroke-width:1.5}
 .vit .vc.live{fill:#141c38;stroke:rgba(200,205,240,.6)}
 .vit .vc.path{fill:url(#vg);stroke:none;filter:drop-shadow(0 0 10px rgba(124,108,255,.8))}
@@ -437,7 +444,10 @@ p{margin:0 0 12px}
 @media (max-width:640px){.ly{grid-template-columns:40px minmax(0,1fr)}.ly em{display:none}.ly + .ly::before{left:37px}.ly + .ly::after{left:35px}}
 .rule{padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
 .rule .eq{font:500 1.25rem/1.3 var(--mono);letter-spacing:-.02em;white-space:nowrap}
-.rule .zoom{height:190px}
+.rule .zoom{min-height:460px;height:100%;background:#ffffff;padding:8px;border-color:rgba(255,255,255,.25)}
+.rule .zoom img{object-fit:contain;background:#ffffff}
+@media (max-width:900px){.rule .zoom{min-height:380px;height:400px}}
+@media (max-width:520px){.rule .zoom{min-height:300px;height:320px}}
 
 .bench .row{display:grid;grid-template-columns:150px minmax(0,1fr) 54px;gap:12px;align-items:center;margin-bottom:14px}
 .bench .lbl{font-size:13.5px;line-height:1.3}
@@ -464,7 +474,7 @@ p{margin:0 0 12px}
 .frame .bar{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
 .frame .bar i{width:10px;height:10px;border-radius:50%;background:#2a3150}
 .frame .bar span{margin:0 auto;font:400 11.5px/1 var(--mono);color:var(--tx3);padding:5px 12px;border-radius:7px;background:rgba(0,0,0,.3)}
-.frame img{width:100%;cursor:zoom-in}
+.frame img{width:100%;height:auto;display:block;cursor:zoom-in}
 .scr-cap{margin-top:12px;color:var(--tx2);font-size:14px}
 
 .techs .tg{margin-bottom:14px}
@@ -487,9 +497,11 @@ details .in li{margin-bottom:6px}
 .io3 .panel{padding:20px}
 .io3 ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--tx2)}
 .io3 li{margin-bottom:5px}
-.photos{display:grid;grid-template-columns:.6fr 1.4fr;gap:12px}
-.photos .zoom{height:300px}
-@media (max-width:640px){.photos{grid-template-columns:minmax(0,1fr)}.photos .zoom{height:220px}}
+.photos{display:grid;grid-template-columns:.75fr 1.25fr;gap:14px}
+.photos .zoom{height:360px}
+.photos .zoom:first-child img{object-fit:cover;object-position:center 42%}
+.photos .zoom:last-child img{object-fit:cover;object-position:center 48%}
+@media (max-width:760px){.photos{grid-template-columns:minmax(0,1fr)}.photos .zoom{height:280px}}
 .cta-row{display:flex;gap:10px;flex-wrap:wrap}
 .cta-row .btn{flex:0 0 auto}
 
@@ -642,7 +654,12 @@ body.tree main,body.tree > footer,body.tree .spine,body.tree .hud,body.tree .top
 .leaf-body .eos{padding:6px 0 0;display:grid;grid-template-columns:minmax(0,1fr);gap:26px;background:none}
 .leaf-body .eos h2{font-size:clamp(1.9rem,3vw,2.8rem)}
 .leaf-body .out-hero{padding:4px 0 0;background:none}
-.leaf-body .photos .zoom{height:230px}
+.leaf-body .photos .zoom{height:320px}
+.leaf-body .rule .zoom{min-height:400px;height:100%}
+.leaf-body #editdist .side .zoom{height:440px}
+.leaf-body #viterbi .side .zoom{height:320px}
+.leaf-body #groupwork .zoom{height:360px}
+@media (max-width:640px){.leaf-body .photos .zoom{height:240px}.leaf-body .rule .zoom{min-height:300px}.leaf-body #editdist .side .zoom{height:320px}.leaf-body #groupwork .zoom{height:280px}}
 .leaf-body .frame{box-shadow:none}
 .leaf #heroH{font-size:clamp(1.8rem,3vw,3.2rem);margin:14px 0 0;line-height:1.02}
 .leaf .te-sub{font:500 .98rem/1.35 var(--te);color:var(--tx3);margin:12px 0 16px}
@@ -706,11 +723,62 @@ body.overview .t3d{pointer-events:none}
 body.overview .leaf{pointer-events:none}
 body.overview.cur-on{cursor:none}
 @media (max-width:1000px){.tov{height:38px;padding:0 10px}.tov{font-size:0}.tov span{font-size:16px}}
-.classic{font:500 12.5px/1 var(--sans);color:var(--tx2);text-decoration:none;padding:10px 14px;border-radius:99px;border:1px solid var(--line);margin-left:auto;white-space:nowrap}
-.classic:hover{color:var(--tx);border-color:var(--violet)}
-@media (max-width:640px){.classic{display:none}}
-body.tree .menu-btn{margin-left:10px}
-@media (max-width:640px){body.tree .menu-btn{margin-left:auto}}
+.classic{font:500 12.5px/1 var(--sans);color:var(--tx2);text-decoration:none;padding:8px 14px;border-radius:99px;border:1px solid var(--line2);background:rgba(255,255,255,.03);margin-left:auto;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s;position:relative;z-index:65}
+.classic:hover{color:var(--tx);border-color:var(--cyan);background:rgba(34,211,238,.08);box-shadow:0 0 16px rgba(34,211,238,.2)}
+.classic .v-icon{font-size:12px;color:var(--cyan)}
+body.tree .classic .v-icon{color:var(--violet)}
+body.tree .classic:hover{border-color:var(--violet);background:rgba(124,108,255,.1);box-shadow:0 0 16px rgba(124,108,255,.25)}
+.menu-btn{margin-left:10px}
+@media (max-width:640px){
+  .classic{padding:7px 11px;font-size:11.5px}
+  .menu-btn{margin-left:8px}
+}
+@media (max-width:420px){
+  .top .nm{max-width:96px;overflow:hidden;text-overflow:ellipsis}
+  .classic .v-lbl-long{display:none}
+}
+
+/* ---------- view selection modal ---------- */
+.vm-backdrop{position:fixed;inset:0;z-index:900;background:rgba(3,5,14,.9);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.2,.8,.2,1)}
+.vm-backdrop.open{opacity:1;pointer-events:auto}
+.vm-box{position:relative;background:linear-gradient(160deg,rgba(18,22,50,.97),rgba(8,11,26,.99));border:1px solid rgba(160,175,255,.25);border-radius:24px;box-shadow:0 30px 100px -20px rgba(0,0,0,.9),0 0 60px -10px rgba(124,108,255,.35);max-width:740px;width:100%;padding:36px 32px 30px;transform:scale(.94) translateY(14px);transition:transform .4s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.vm-backdrop.open .vm-box{transform:scale(1) translateY(0)}
+.vm-box::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(124,108,255,.2),transparent 70%)}
+.vm-head{position:relative;margin-bottom:26px;text-align:center}
+.vm-badge{display:inline-flex;align-items:center;gap:8px;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:6px 12px;border:1px solid rgba(34,211,238,.35);border-radius:99px;background:rgba(34,211,238,.06);margin-bottom:12px}
+.vm-head h2{font:600 clamp(1.7rem,3.6vw,2.4rem)/1.15 var(--sans);letter-spacing:-.04em;margin:0 0 8px}
+.vm-sub{color:var(--tx2);font-size:14.5px;max-width:38em;margin:0 auto;line-height:1.55}
+.vm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:20px;position:relative}
+@media (max-width:640px){.vm-grid{grid-template-columns:minmax(0,1fr)}.vm-box{padding:26px 18px 22px}}
+.vm-card{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:22px 20px 20px;border-radius:18px;border:1px solid rgba(150,165,255,.18);background:rgba(12,16,36,.65);color:var(--tx);transition:all .3s cubic-bezier(.2,.8,.2,1);cursor:pointer;position:relative;overflow:hidden;width:100%}
+.vm-card:hover{border-color:var(--cyan);background:rgba(18,25,56,.9);transform:translateY(-3px);box-shadow:0 20px 40px -15px rgba(0,0,0,.6),0 0 30px rgba(34,211,238,.2)}
+.vm-card.tree-card:hover{border-color:var(--violet);box-shadow:0 20px 40px -15px rgba(0,0,0,.6),0 0 30px rgba(167,139,250,.3)}
+.vm-card:focus-visible{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(34,211,238,.4)}
+.vm-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.05);border:1px solid var(--line2);margin-bottom:14px;color:var(--cyan);transition:transform .3s}
+.vm-card.tree-card .vm-icon{color:var(--violet)}
+.vm-card:hover .vm-icon{transform:scale(1.1)}
+.vm-icon svg{width:22px;height:22px}
+.vm-title{display:flex;align-items:center;gap:10px;font:600 1.25rem/1.2 var(--sans);letter-spacing:-.02em;margin-bottom:8px}
+.vm-tag{font:500 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:6px;border:1px solid var(--line2);color:var(--tx3)}
+.vm-desc{color:var(--tx2);font-size:13px;line-height:1.5;margin:0 0 14px;flex:1}
+.vm-feats{list-style:none;margin:0 0 18px;padding:0;font:400 12px/1.65 var(--mono);color:var(--tx3);width:100%}
+.vm-feats li{display:flex;align-items:center;gap:8px}
+.vm-feats li i{font-style:normal;color:var(--cyan);font-weight:600}
+.vm-card.tree-card .vm-feats li i{color:var(--violet)}
+.vm-btn{margin-top:auto;width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:12px;font:600 13.5px/1 var(--sans);border:1px solid transparent;transition:all .2s;pointer-events:none}
+.vm-card.tree-card .vm-btn{background:var(--grad);color:#0a0d1c}
+.vm-card.classic-card .vm-btn{background:rgba(255,255,255,.08);color:var(--tx);border-color:var(--line2)}
+.vm-card:hover .vm-btn{filter:brightness(1.12)}
+.vm-foot{position:relative;text-align:center;font:400 11.5px/1.4 var(--mono);color:var(--tx3);padding-top:6px}
+.vm-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:10px;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--tx2);font-size:18px;line-height:1;display:grid;place-items:center;cursor:pointer;transition:all .2s}
+.vm-close:hover{border-color:var(--cyan);color:var(--tx);background:rgba(34,211,238,.1)}
+
+/* menu view option controls */
+.m-view-opt{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0 4px}
+.m-view-btn{padding:8px 14px;border-radius:99px;border:1px solid var(--cyan);background:rgba(34,211,238,.1);color:var(--cyan);font:500 12px/1 var(--mono);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.m-view-btn:hover{background:rgba(34,211,238,.2);border-color:var(--cyan);box-shadow:0 0 14px rgba(34,211,238,.3)}
+.m-view-btn-sec{background:none;border:0;color:var(--tx3);font:400 12px/1 var(--mono);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
+.m-view-btn-sec:hover{color:var(--tx2)}
 
 @media (min-width:1001px){body.gl .lh > div:last-child{max-width:min(600px,60%)}body.gl .lh{min-height:300px}}
 
@@ -720,6 +788,57 @@ body.tree .menu-btn{margin-left:10px}
 </style>
 </head>
 <body>
+
+<div class="vm-backdrop" id="viewModal" aria-hidden="true" role="dialog" aria-labelledby="vmTitle">
+  <div class="vm-box">
+    <button class="vm-close" id="vmCloseBtn" type="button" aria-label="Close dialog">×</button>
+    <div class="vm-head">
+      <div class="vm-badge">Welcome · CSI4001 Portfolio</div>
+      <h2 id="vmTitle">Select Your <span class="gt">Experience</span></h2>
+      <p class="vm-sub">Choose how you’d like to explore Kammara Suryateja’s coursework, computational linguistics labs, and the NLP-Khata project.</p>
+    </div>
+    <div class="vm-grid">
+      <button class="vm-card tree-card" id="vmTreeBtn" type="button">
+        <div class="vm-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="5" r="3"/>
+            <circle cx="5" cy="19" r="3"/>
+            <circle cx="19" cy="19" r="3"/>
+            <path d="M12 8v4M12 12l-5 4M12 12l5 4"/>
+          </svg>
+        </div>
+        <div class="vm-title">3D Tree View <span class="vm-tag">Spatial 3D</span></div>
+        <p class="vm-desc">Explore the entire portfolio structured on a 3D semantic stem with real-time particle fields and orbital leaves.</p>
+        <ul class="vm-feats">
+          <li><i>✓</i> 18 interactive 3D leaf panels</li>
+          <li><i>✓</i> Spatial camera &amp; orbit navigation</li>
+          <li><i>✓</i> Scroll &amp; arrow-key exploration</li>
+        </ul>
+        <span class="vm-btn">Launch 3D Tree →</span>
+      </button>
+
+      <button class="vm-card classic-card" id="vmClassicBtn" type="button">
+        <div class="vm-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="3" width="16" height="18" rx="3"/>
+            <path d="M8 8h8M8 12h8M8 16h5"/>
+          </svg>
+        </div>
+        <div class="vm-title">Classic View <span class="vm-tag">Editorial</span></div>
+        <p class="vm-desc">A continuous, editorial scroll with full layer-by-layer breakdowns, live algorithmic widgets, and reading flow.</p>
+        <ul class="vm-feats">
+          <li><i>✓</i> Smooth linear narrative flow</li>
+          <li><i>✓</i> Live edit distance &amp; Viterbi widgets</li>
+          <li><i>✓</i> Optimized for all reading devices</li>
+        </ul>
+        <span class="vm-btn">Launch Classic View →</span>
+      </button>
+    </div>
+    <div class="vm-foot">
+      <span>You can switch between views anytime using the top bar or menu.</span>
+    </div>
+  </div>
+</div>
 
 <div class="loader" id="loader" aria-hidden="true">
   <div class="ld-top"><span>NLP Portfolio · CSI4001</span><span>Kammara Suryateja</span></div>
@@ -750,7 +869,14 @@ body.tree .menu-btn{margin-left:10px}
       <li style="--i:6"><a href="#l6"><i>06</i>Output<small>NLP-Khata project</small></a></li>
       <li style="--i:7"><a href="#eos"><i>∎</i>&lt;/s&gt;<small>links</small></a></li>
     </ol>
-    <div class="mfoot"><span>Kammara Suryateja · 23MID0143 · CSI4001 · Prof. Sharmila Banu K</span><span><a href="https://github.com/SuriyaTheja/NLP" target="_blank" rel="noopener">GitHub ↗</a><a href="https://drive.google.com/file/d/1Td8HYRQgGdEjgRsrdlXK6J5rK0GWK7zR/view?usp=sharing" target="_blank" rel="noopener">Demo ↗</a><a href="https://docs.google.com/presentation/d/19Lbqc6vBj-t2XlcNinssvLTuQuv-K3rH/edit?usp=sharing&amp;ouid=110945080252144397082&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Slides ↗</a></span></div>
+    <div class="mfoot">
+      <span>Kammara Suryateja · 23MID0143 · CSI4001 · Prof. Sharmila Banu K</span>
+      <div class="m-view-opt">
+        <button class="m-view-btn" id="mViewToggleBtn" type="button"><span class="v-icon">✦</span><span id="mViewToggleLbl">Switch view</span></button>
+        <button class="m-view-btn-sec" id="mChooseViewBtn" type="button">Change view mode…</button>
+      </div>
+      <span><a href="https://github.com/SuriyaTheja/NLP" target="_blank" rel="noopener">GitHub ↗</a><a href="https://drive.google.com/file/d/1Td8HYRQgGdEjgRsrdlXK6J5rK0GWK7zR/view?usp=sharing" target="_blank" rel="noopener">Demo ↗</a><a href="https://docs.google.com/presentation/d/19Lbqc6vBj-t2XlcNinssvLTuQuv-K3rH/edit?usp=sharing&amp;ouid=110945080252144397082&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">Slides ↗</a></span>
+    </div>
   </div>
 </div>
 <div class="hud" id="hud" aria-hidden="true"><span><span class="nm" id="hudNm">input</span><span class="tot">of 06 layers</span></span><b id="hudN">00</b></div>
@@ -862,7 +988,7 @@ body.tree .menu-btn{margin-left:10px}
         <h3>Give an example of a metaphor</h3>
         <p class="meta-q gt">“Old is gold.”</p>
         <p class="mut" style="font-size:14px">My answer in the class discussion.</p>
-        <div class="zoom" data-zoom="assets/img/metaphor-chat.jpg" data-cap="Class discussion: my answer, “Old is Gold”"><img src="assets/img/metaphor-chat.jpg" alt="Class chat showing the answer Old is Gold" loading="lazy" style="object-position:center 80%"><span class="cap">class chat</span></div>
+        <div class="zoom" data-zoom="assets/img/metaphor-chat.jpg" data-cap="Class discussion: my answer, “Old is Gold”"><img src="assets/img/metaphor-chat.jpg" alt="Class chat showing the answer Old is Gold" loading="lazy"><span class="cap">class chat</span></div>
       </div>
 
       <div class="panel pad rv" id="groupwork">
@@ -874,7 +1000,7 @@ body.tree .menu-btn{margin-left:10px}
           <li><b>Rumour detection</b> during a pandemic (Nipah): NER to extract places and hospitals, entity linking, text classification.</li>
           <li><b>Outbreak radar</b> using NLP and transport data: classification, custom NER, geoparsing, temporal extraction, for hotspot analysis, origin detection and transport-network prediction.</li>
         </ul>
-        <div class="zoom" data-zoom="assets/img/group-work-health-transport.jpg" data-cap="Group work notes: rumour detection and outbreak radar"><img src="assets/img/group-work-health-transport.jpg" alt="Group work notes" loading="lazy" style="object-position:center 40%"><span class="cap">our notes</span></div>
+        <div class="zoom" data-zoom="assets/img/group-work-health-transport.jpg" data-cap="Group work notes: rumour detection and outbreak radar"><img src="assets/img/group-work-health-transport.jpg" alt="Group work notes" loading="lazy"><span class="cap">our notes</span></div>
       </div>
     </div>
   </div>
@@ -979,8 +1105,8 @@ body.tree .menu-btn{margin-left:10px}
         </table>
         <p class="small" style="margin-top:10px">-లు is the commonly used plural suffix; some nouns undergo spelling or stem changes when forming plurals.</p>
         <div class="g2" style="gap:10px;margin-top:14px">
-          <div class="zoom" style="height:120px" data-zoom="assets/img/telugu-verb-segmentation.jpg" data-cap="Verb segmentation notes"><img src="assets/img/telugu-verb-segmentation.jpg" alt="Verb segmentation notes" loading="lazy"><span class="cap">verb notes</span></div>
-          <div class="zoom" style="height:120px" data-zoom="assets/img/telugu-plural-morphology.jpg" data-cap="Plural morphology notes"><img src="assets/img/telugu-plural-morphology.jpg" alt="Plural morphology notes" loading="lazy" style="object-position:top"><span class="cap">plural notes</span></div>
+          <div class="zoom" style="height:280px;background:#080c1b;padding:4px" data-zoom="assets/img/telugu-verb-segmentation.jpg" data-cap="Verb segmentation notes"><img src="assets/img/telugu-verb-segmentation.jpg" alt="Verb segmentation notes" loading="lazy"><span class="cap">verb notes</span></div>
+          <div class="zoom" style="height:280px;background:#080c1b;padding:4px" data-zoom="assets/img/telugu-plural-morphology.jpg" data-cap="Plural morphology notes"><img src="assets/img/telugu-plural-morphology.jpg" alt="Plural morphology notes" loading="lazy"><span class="cap">plural notes</span></div>
         </div>
       </div>
 
@@ -1010,7 +1136,7 @@ body.tree .menu-btn{margin-left:10px}
           <button class="chip" data-n="పుస్తకం" data-m="good book">పుస్తకం · book</button>
         </div>
         <div class="fsa-out" id="fsaO"><span class="a">మంచి</span> అబ్బాయి<small>good boy</small></div>
-        <div class="zoom" style="height:150px;margin-top:20px" data-zoom="assets/img/telugu-adjective-fsa.jpg" data-cap="Adjective FSA notes"><img src="assets/img/telugu-adjective-fsa.jpg" alt="Adjective FSA notes" loading="lazy" style="object-position:center 55%"><span class="cap">FSA notes</span></div>
+        <div class="zoom" style="height:380px;margin-top:20px;background:#080c1b;padding:4px" data-zoom="assets/img/telugu-adjective-fsa.jpg" data-cap="Adjective FSA notes"><img src="assets/img/telugu-adjective-fsa.jpg" alt="Adjective FSA notes" loading="lazy"><span class="cap">FSA notes</span></div>
       </div>
     </div>
   </div>
@@ -1252,8 +1378,8 @@ body.tree .menu-btn{margin-left:10px}
         </div>
         <p class="mut" style="font-size:14px;margin:18px 0 14px">Generic LLMs flipped who owes whom in 25% of cases. On the gold vernacular evaluation set, NLP-Khata made no reversals in 350 directional samples.</p>
         <div class="g2" style="gap:10px">
-          <div class="zoom" style="height:120px" data-zoom="assets/img/khata-confusion-matrix.png" data-cap="Figure 8.1 · Bilateral direction confusion matrix (zero reversals)"><img src="assets/img/khata-confusion-matrix.png" alt="Confusion matrix" loading="lazy" style="object-fit:contain;background:#fff"><span class="cap">Fig 8.1</span></div>
-          <div class="zoom" style="height:120px" data-zoom="assets/img/khata-corpus-benchmark.png" data-cap="Figure 6.1 · Linguistic corpus distribution and exact-match benchmark profile"><img src="assets/img/khata-corpus-benchmark.png" alt="Corpus and benchmark" loading="lazy" style="object-fit:contain;background:#fff"><span class="cap">Fig 6.1</span></div>
+          <div class="zoom" style="height:210px;background:#fff;padding:6px" data-zoom="assets/img/khata-confusion-matrix.png" data-cap="Figure 8.1 · Bilateral direction confusion matrix (zero reversals)"><img src="assets/img/khata-confusion-matrix.png" alt="Confusion matrix" loading="lazy" style="object-fit:contain;background:#fff"><span class="cap">Fig 8.1</span></div>
+          <div class="zoom" style="height:210px;background:#fff;padding:6px" data-zoom="assets/img/khata-corpus-benchmark.png" data-cap="Figure 6.1 · Linguistic corpus distribution and exact-match benchmark profile"><img src="assets/img/khata-corpus-benchmark.png" alt="Corpus and benchmark" loading="lazy" style="object-fit:contain;background:#fff"><span class="cap">Fig 6.1</span></div>
         </div>
       </div>
     </div>
@@ -1652,12 +1778,13 @@ const X = t => 150 + t * 156, Y = { A: 96, N: 196 };
 let vStep = 0;
 function renderVit() {
   const done = vStep > W.length;
-  let g = `<defs><linearGradient id="vg" x1="0" x2="1"><stop offset="0" stop-color="#b69cff"/><stop offset="1" stop-color="#2fd6f0"/></linearGradient></defs>`;
+  let g = `<defs><linearGradient id="vg" gradientUnits="userSpaceOnUse" x1="120" y1="0" x2="640" y2="0"><stop offset="0%" stop-color="#b69cff"/><stop offset="100%" stop-color="#2fd6f0"/></linearGradient></defs>`;
   ST.forEach(s => g += `<text class="vl" x="6" y="${Y[s] + 4}">${s === 'A' ? 'A · adjective' : 'N · noun'}</text>`);
   W.forEach((w, t) => g += `<text class="vw${t < vStep ? ' on' : ''}" x="${X(t)}" y="36">${w}</text>`);
-  for (let t = 1; t < Math.min(vStep, W.length); t++) ST.forEach(s => ST.forEach(p => {
+  const maxT = done ? W.length - 1 : Math.min(vStep - 1, W.length - 1);
+  for (let t = 1; t <= maxT; t++) ST.forEach(s => ST.forEach(p => {
     const bp = BP[t][s] === p && V[t][s] > 0, on = done && bestPath[t] === s && bestPath[t - 1] === p;
-    g += `<line class="ve${on ? ' path' : bp ? ' bp' : ''}" x1="${X(t - 1) + 30}" y1="${Y[p]}" x2="${X(t) - 30}" y2="${Y[s]}"/>`;
+    g += `<line class="ve${on ? ' path' : bp ? ' bp' : ''}" x1="${X(t - 1) + 28}" y1="${Y[p]}" x2="${X(t) - 28}" y2="${Y[s]}"/>`;
   }));
   W.forEach((w, t) => ST.forEach(s => {
     const shown = t < vStep, v = V[t][s], on = done && bestPath[t] === s, cls = on ? 'path' : shown ? 'live' : '';
@@ -1672,9 +1799,20 @@ function renderVit() {
   else e.innerHTML = `Backtrace → <b>${bestPath.join(' → ')}</b>, P = <b>${fx(V[W.length - 1][lastBest])}</b>. Same as my notes: killer/N crazy/A clown/N problem/N.`;
   $('#vS').textContent = done ? 'Done ✓' : vStep === W.length ? 'Backtrace ▸' : 'Step ▸';
 }
-$('#vS').onclick = () => { if (vStep <= W.length) { vStep++; renderVit(); } };
-$('#vA').onclick = async () => { vStep = 0; renderVit(); for (let i = 0; i <= W.length; i++) { await sleep(reduced ? 0 : 550); vStep++; renderVit(); } };
-$('#vR').onclick = () => { vStep = 0; renderVit(); };
+let vRunId = 0;
+$('#vS').onclick = () => { if (vStep <= W.length) { vRunId++; vStep++; renderVit(); } };
+$('#vA').onclick = async () => {
+  const curId = ++vRunId;
+  vStep = 0;
+  renderVit();
+  for (let i = 0; i <= W.length; i++) {
+    await sleep(reduced ? 0 : 550);
+    if (vRunId !== curId) return;
+    vStep++;
+    renderVit();
+  }
+};
+$('#vR').onclick = () => { vRunId++; vStep = 0; renderVit(); };
 renderVit();
 
 /* auto-run on first view */
@@ -1839,8 +1977,7 @@ function leafDefs() {
 }
 
 function buildGL() {
-  const classic = /classic/.test(location.search + location.hash);
-  if (classic || reduced || typeof THREE === 'undefined') return null;
+  if (typeof THREE === 'undefined') return null;
   const canvas = $('#gl');
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
@@ -1884,7 +2021,12 @@ function buildGL() {
   const hint = document.createElement('div'); hint.className = 'thint';
   hint.innerHTML = '<span>Scroll</span> or <span>↑ ↓</span> to turn the tree · click a leaf to open it';
   document.body.appendChild(hint);
-  const sw = document.createElement('a'); sw.className = 'classic'; sw.href = '?classic'; sw.textContent = 'Classic view';
+  const sw = document.createElement('button');
+  sw.className = 'classic';
+  sw.type = 'button';
+  sw.innerHTML = '<span class="v-icon">📄</span><span class="v-lbl"><span class="v-lbl-long">Classic </span>view</span>';
+  sw.setAttribute('aria-label', 'Switch to Classic linear view');
+  sw.onclick = () => switchView('classic');
   $('.top').insertBefore(sw, $('#mBtn'));
 
   /* ---- three.js scene: stem, branches, dust ---- */
@@ -2219,6 +2361,105 @@ function loop(t) {
   requestAnimationFrame(loop);
 }
 
+/* ---------- view selection system ---------- */
+const STORAGE_KEY = 'nlp_portfolio_view';
+
+function getViewPreference() {
+  const p = new URLSearchParams(location.search);
+  if (p.has('classic') || location.hash === '#classic') return 'classic';
+  if (p.has('tree') || location.hash === '#tree') return 'tree';
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'classic' || saved === 'tree') return saved;
+  } catch (err) {}
+  return null;
+}
+
+function setViewPreference(v) {
+  try {
+    localStorage.setItem(STORAGE_KEY, v);
+  } catch (err) {}
+}
+
+function switchView(target) {
+  setViewPreference(target);
+  const cleanSearch = target === 'classic' ? '?classic' : '?tree';
+  location.href = location.pathname + cleanSearch;
+}
+
+function updateMenuViewControls(currentMode) {
+  const toggleBtn = $('#mViewToggleBtn');
+  const toggleLbl = $('#mViewToggleLbl');
+  if (toggleBtn && toggleLbl) {
+    if (currentMode === 'tree') {
+      toggleLbl.textContent = 'Switch to Classic view';
+      const icon = toggleBtn.querySelector('.v-icon'); if (icon) icon.textContent = '📄';
+      toggleBtn.onclick = () => { closeMenu(); switchView('classic'); };
+    } else {
+      toggleLbl.textContent = 'Switch to 3D Tree view';
+      const icon = toggleBtn.querySelector('.v-icon'); if (icon) icon.textContent = '✦';
+      toggleBtn.onclick = () => { closeMenu(); switchView('tree'); };
+    }
+  }
+  const chooseBtn = $('#mChooseViewBtn');
+  if (chooseBtn) {
+    chooseBtn.onclick = () => {
+      closeMenu();
+      openViewModal(currentMode);
+    };
+  }
+}
+
+function openViewModal(currentMode) {
+  const modal = $('#viewModal');
+  if (!modal) return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  $('#vmTreeBtn').onclick = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (currentMode !== 'tree') switchView('tree');
+  };
+  $('#vmClassicBtn').onclick = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (currentMode !== 'classic') switchView('classic');
+  };
+  $('#vmCloseBtn').onclick = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  };
+  modal.onclick = e => {
+    if (e.target === modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  };
+}
+
+function promptFirstTimeView() {
+  return new Promise(resolve => {
+    const modal = $('#viewModal');
+    if (!modal) return resolve('tree');
+    const closeBtn = $('#vmCloseBtn');
+    if (closeBtn) closeBtn.style.display = 'none';
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+
+    const choose = view => {
+      setViewPreference(view);
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      if (closeBtn) closeBtn.style.display = '';
+      resolve(view);
+    };
+
+    $('#vmTreeBtn').onclick = () => choose('tree');
+    $('#vmClassicBtn').onclick = () => choose('classic');
+  });
+}
+
 /* ---------- loader ---------- */
 (async () => {
   body.classList.add('loading');
@@ -2247,15 +2488,39 @@ function loop(t) {
     tick();
   });
   clearInterval(wT); $('#ldTok').textContent = 'decoded';
-  try { GLs = buildGL(); } catch (err) { GLs = null; }
+
+  let mode = getViewPreference();
+  if (!mode) {
+    mode = await promptFirstTimeView();
+  }
+
+  if (mode === 'tree') {
+    try { GLs = buildGL(); } catch (err) { GLs = null; }
+  } else {
+    GLs = null;
+  }
   window.__GL = GLs;
-  if (GLs) GLs.show(); else body.classList.add('nogl');
-  if (!GLs && /classic/.test(location.search)) { const a = document.createElement('a'); a.className = 'classic'; a.href = location.pathname; a.textContent = 'Tree view'; $('.top').insertBefore(a, $('#mBtn')); }
+
+  if (GLs) {
+    GLs.show();
+  } else {
+    body.classList.add('nogl');
+    const sw = document.createElement('button');
+    sw.className = 'classic';
+    sw.type = 'button';
+    sw.innerHTML = '<span class="v-icon">✦</span><span class="v-lbl"><span class="v-lbl-long">Tree </span>view</span>';
+    sw.setAttribute('aria-label', 'Switch to 3D Tree view');
+    sw.onclick = () => switchView('tree');
+    $('.top').insertBefore(sw, $('#mBtn'));
+  }
+
+  updateMenuViewControls(mode);
+
   requestAnimationFrame(loop);
   await sleep(reduced ? 0 : 250);
   $('#loader').classList.add('done');
   body.classList.remove('loading');
-  lenis && lenis.start();
+  if (!body.classList.contains('tree') && lenis) lenis.start();
   await sleep(reduced ? 0 : 380);
   body.classList.add('ready');
   $('#heroH').classList.add('in');
